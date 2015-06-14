@@ -1,1 +1,3 @@
-default: --require features
+default: --require features  
+reports: --color --format html --out reports/<%= Time.now.strftime("%Y%m%d-%H%M%S") %>-report.htm --require features
+rerun: -f rerun --out rerun.txt --require features
