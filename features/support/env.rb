@@ -2,7 +2,7 @@
 require 'selenium-webdriver'
 require 'page-object'
 require 'page-object/page_factory'  #For later refactor: github.com/cheezy/page-object/wiki/Creating-and-using-page-objects
-require 'rspec'
+require 'rspec/expectations'
 require 'net/http'
 require 'rubygems'
 require 'json'
