@@ -1,3 +1,27 @@
-default: --require features  
-reports: --color --format html --out reports/<%= Time.now.strftime("%Y%m%d-%H%M%S") %>-report.htm --require features
-rerun: -f rerun --out rerun.txt --require features
+#Setup:
+<%
+  @time = Time.now.strftime("%Y-%m-%d__%H%M_%Ss")
+  Dir.mkdir('./features/reports/') unless File.exists?('./features/reports')
+  @report_path = "./features/reports/#{@time}/"
+  @screenshot_path = "./features/reports/#{@time}/"
+  @new_dir_setup = -> { Dir.mkdir(@report_path) unless File.exists?(@report_path) }
+  ENV['SERVER_URL'] = ENV['SERVER_URL'] || 'http://schoolrunner.com'
+%>
+
+# Cucumber Profile components:
+common: RESET_BETWEEN_SCENARIOS=1 SERVER_URL=<%= ENV['SERVER_URL'] %> -f progress -r features
+html_report: <% @new_dir_setup.call %> -f html --out=<%= @report_path %>web_test_report<%= ENV['TEST_ENV_NUMBER'] %>.html SCREENSHOT_PATH=<%= @screenshot_path %>
+base: -p common -p html_report
+
+#Cucumber Profiles:
+default: -p base
+
+#Secondary Profiles:
+# rerun: -p base -f rerun --out rerun.txt
+
+#Browser-specific profiles:
+firefox: -p default
+chrome: -p default WEB_BROWSER=chrome
+safari: -p default WEB_BROWSER=safari
+smoke: -p default --tags @smoke
+headless: -p default WEB_BROWSER=poltergeist --tags ~@headless_fail   #The tag excludes scnenarios tagged as failing in headless mode

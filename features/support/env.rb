@@ -1,25 +1,40 @@
 #Ruby Gems
 require 'selenium-webdriver'
-require 'page-object'
-require 'page-object/page_factory'  #For later refactor: github.com/cheezy/page-object/wiki/Creating-and-using-page-objects
+require 'capybara'
+require 'capybara/cucumber'
+require 'capybara-screenshot'
+require 'capybara-screenshot/cucumber'
+require 'site_prism'
 require 'rspec/expectations'
+require 'yaml'
+require 'recursive-open-struct'
+require 'capybara/poltergeist'
+require 'parallel_tests'
+require 'timeout'
 require 'net/http'
 require 'rubygems'
 require 'json'
+require 'pry'
+Bundler.require :default, :test
 
-#Page Classes
-require_relative '../../lib/home_page'
-require_relative '../../lib/login_page'
+Capybara.default_wait_time = 20
 
-#Hooks
-#Create new browser object and close the browser for each scenario
-Before do 
-  @browser = Selenium::WebDriver.for (:firefox)
-  @browser.manage().window().maximize()
+Capybara.default_driver = :selenium
+
+WEB_BROWSER ||= (ENV["WEB_BROWSER"] || 'firefox').downcase.to_sym
+
+Capybara.register_driver WEB_BROWSER do |app|
+  Capybara::Selenium::Driver.new(app, :browser => WEB_BROWSER)
 end
 
-After do 
-  @browser.quit
+Capybara.current_driver = :selenium
+Capybara.run_server = false
+Capybara.app_host = 'http://schoolrunner.org'
+
+ENV['SCREENSHOT_PATH'] ||= '../reports/'
+Capybara.save_and_open_page_path = ENV['SCREENSHOT_PATH']
+Capybara::Screenshot.register_driver(WEB_BROWSER) do |driver, path|
+  driver.browser.save_screenshot(path)
 end
 
-World(PageObject::PageFactory)   #Included for PageFactory refactor
+World(Capybara)

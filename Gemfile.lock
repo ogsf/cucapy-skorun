@@ -1,9 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.8)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-screenshot (1.0.9)
+      capybara (>= 1.0, < 3)
+      launchy
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
+    cliver (0.3.2)
+    coderay (1.1.0)
     cucumber (2.0.0)
       builder (>= 2.1.2)
       cucumber-core (~> 1.1.3)
@@ -13,24 +27,55 @@ GEM
       multi_test (>= 0.1.2)
     cucumber-core (1.1.3)
       gherkin (~> 2.12.0)
-    data_magic (0.21)
-      faker (>= 1.1.2)
-      yml_reader (>= 0.4)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.5)
-    faker (1.4.3)
-      i18n (~> 0.5)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.8)
     gherkin (2.12.2)
       multi_json (~> 1.3)
-    i18n (0.7.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    method_source (0.8.2)
+    mime-types (2.6.1)
+    mini_portile (0.6.2)
     multi_json (1.11.1)
     multi_test (0.1.2)
-    page-object (1.1.0)
-      page_navigation (>= 0.9)
-      selenium-webdriver (>= 2.44.0)
-      watir-webdriver (>= 0.6.11)
-    page_navigation (0.9)
-      data_magic (>= 0.14)
+    multi_xml (0.5.5)
+    netrc (0.10.3)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    parallel (1.6.0)
+    parallel_tests (1.3.9)
+      parallel
+    poltergeist (1.6.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
+    rack (1.6.1)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    recursive-open-struct (0.6.4)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -50,19 +95,41 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    watir-webdriver (0.7.0)
-      selenium-webdriver (>= 2.45)
+    site_prism (2.7)
+      addressable (>= 2.3.3, < 3.0)
+      capybara (>= 2.1, < 3.0)
+    slop (3.6.0)
+    timeout (0.0.1)
+      timeout-extensions
+    timeout-extensions (0.0.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     websocket (1.2.2)
-    yml_reader (0.5)
+    websocket-driver (0.5.4)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  capybara
+  capybara-screenshot
   cucumber
-  page-object
+  httparty
+  parallel_tests
+  poltergeist
+  pry-nav
+  pry-stack_explorer
+  recursive-open-struct
+  rest-client
   rspec
   selenium-webdriver
+  site_prism
+  timeout
 
 BUNDLED WITH
    1.10.3
