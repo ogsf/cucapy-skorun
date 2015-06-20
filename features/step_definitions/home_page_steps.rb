@@ -18,7 +18,7 @@ Then(/^I am taken to the Learn More text$/) do
 end
 
 Then(/^I am taken to the login page$/) do
-  page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
+  # page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)  #Don't think I need this anymore. Delete when sure.
   @login_page = LoginPage.new
   @login_page.wait_for_username_input(10)
   expect(@login_page).to have_username_input

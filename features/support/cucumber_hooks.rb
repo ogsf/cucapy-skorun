@@ -28,5 +28,5 @@ After do |scenario|
 
   #Close web browser and clear session
   # page.execute_script "window.close()"
-  page.execute_script "sessionStorage.clear()"
+  # page.execute_script "sessionStorage.clear()"
 end
