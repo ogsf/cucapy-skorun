@@ -5,7 +5,7 @@
   @report_path = "./features/reports/#{@time}/"
   @screenshot_path = "./features/reports/#{@time}/"
   @new_dir_setup = -> { Dir.mkdir(@report_path) unless File.exists?(@report_path) }
-  ENV['SERVER_URL'] = ENV['SERVER_URL'] || 'http://schoolrunner.com'
+  ENV['SERVER_URL'] = ENV['SERVER_URL'] || 'http://schoolrunner.org'
 %>
 
 # Cucumber Profile components:

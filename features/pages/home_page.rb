@@ -3,8 +3,13 @@ class HomePage < SitePrism::Page
   set_url "/"
   set_url_matcher /schoolrunner.org\/?/
 
-  element :sign_in_link,      "a[text='Sign In']"
-  # element(:learn_more_button) { find(:css, 'div.btn.teal.learn-more.hover') }
+  
+  #element definitions
+  element :sign_in_link,        'a.teal.link.sign-in'
+  element :learn_more_button,   'div.btn.teal.learn-more.hover'
+  element :learn_more_text,     'h2.section-heading.problem'
+
+
   # element(:learn_more_text)   { find(:css, 'h2.section-heading.problem') }
 
   # def click_sign_in_link
