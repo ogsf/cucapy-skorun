@@ -3,8 +3,7 @@ class DemoHomePage < SitePrism::Page
   set_url "/home{?asof=*}"
   set_url_matcher /demo.schoolrunner.org\/?/
 
-  element :h1_heading,       'h1'
-
-  # link(:forgot_password_link, :xpath => "//*[@id='login-form']/div[4]/a")
+  element :h1_heading,  :xpath,   '//h1[.="Home"]'  #xpath allows us to specify the text in the element
+  # element :h1_heading,            'h1'            #valid css, for a page with only one 'h1' element
   
 end
