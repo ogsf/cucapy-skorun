@@ -4,16 +4,14 @@ Given(/^I am on the SchoolRunner demo site login page$/) do
 end
 
 When(/^I login with valid credentials$/) do
-  @demo_login.login(FIXTURE.user_1.username, FIXTURE.user_1.password)
+  @demo_login.login(FIXTURE.user_1.username, FIXTURE.user_1.password)   # Passing credentials from fixture.yml
 end
 
 Then(/^I am taken to the demo site home page$/) do
   @demo_home = DemoHomePage.new
-  # puts @demo_login.current_url
-  @demo_home.wait_for_h1_heading(10)
-  puts @demo_home.h1_heading.text
-  expect(@demo_home).to be_displayed
-  expect(@demo_home.h1_heading.text).to have_content("Home")
+  @demo_home.wait_for_h1_heading(10)  # site-prism method to wait for an element to load, with optional time-out
+  expect(@demo_home).to be_displayed  # site-prism method to verify page is loaded
+  expect(@demo_home.h1_heading.text).to have_content("Home")  # Using Capybara .text method to return element content
 end
 
 When(/^I login with "([^"]*)" and "([^"]*)" credentials$/) do |username, password|
@@ -31,8 +29,8 @@ Then(/^I see an error indicator$/) do
     expect(@demo_login.username_error.visible?).to be true
     @demo_login.has_username_error?
   elsif @password.nil? then
-    expect(@demo_login.password_error).to be  #Why doesn't this work? ToDo: Find out.
-    @demo_login.has_password_error?
+    expect(@demo_login.password_error).to be  # passes if obj is truthy (not nil or false)
+    @demo_login.has_password_error?           # same validation using site-prism method
   end
 end
 
