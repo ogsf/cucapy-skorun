@@ -1,0 +1,14 @@
+timeouts:
+  short_timeout: 2
+  standard_timeout: 20
+  long_timeout: 65
+
+screen_sizes:
+  xl: 1024
+  l: 980
+  m: 768
+  s: 320
+
+user_1:
+  username: kevint@boulder.net
+  password: $8ndyGirl

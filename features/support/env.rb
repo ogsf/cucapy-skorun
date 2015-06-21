@@ -17,6 +17,8 @@ require 'json'
 require 'pry'
 Bundler.require :default, :test
 
+FIXTURE = RecursiveOpenStruct.new(YAML.load_file("./features/fixtures/fixture.yml"))
+
 # Capybara.default_wait_time = 20   #This is not used by site-prism unless a spec_file is configured. This is an RSpec thing I think.
 
 Capybara.default_driver = :selenium

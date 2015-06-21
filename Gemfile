@@ -15,4 +15,5 @@ group :test do
   gem 'pry-nav'
   gem 'pry-stack_explorer'
   gem 'rest-client'
+  gem 'activesupport'  #to ordinalize numbers, ie, 1st, 2nd, 3rd etc
 end
