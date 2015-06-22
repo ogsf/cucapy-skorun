@@ -1,9 +1,9 @@
 # cucapy-skorun
 <h2>
-# Coding Best Practices
+# Coding Best Practices<br>
 # =====================
 </h2>
-<h3>
+<h5>
 #  1. Elements are defined with css selectors as a rule. However, 
 #      * xpath can be used if:
 #        * the element text is needed to specify which element, e.g. //h1[.="Home"] instead of (css) 'h1'
@@ -30,4 +30,4 @@
 # 10. Actions on elements (such as .text, .click etc) are called inside step definitions or class methods, not defined separately
 #
 # 11. Comment the code, no-one likes an Obfuscating Hero.
-</h3>
+</h5>
