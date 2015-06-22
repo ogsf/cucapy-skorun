@@ -20,6 +20,8 @@ After do |scenario|
   end
 
   #Close web browser and clear session
-  page.execute_script "window.close()"
+  if WEB_BROWSER != :poltergeist
+    page.execute_script "window.close()"
+  end
   page.execute_script "sessionStorage.clear()"
 end

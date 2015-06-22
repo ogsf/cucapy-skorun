@@ -10,6 +10,7 @@ group :test do
   gem 'httparty'
   gem 'recursive-open-struct'
   gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'parallel_tests'
   gem 'timeout'
   gem 'pry-nav'
