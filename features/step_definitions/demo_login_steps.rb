@@ -3,10 +3,11 @@ Given(/^I am on the SchoolRunner demo site login page$/) do
   @demo_login.load
 end
 
-Given(/^I log into the School Runner site as "([^"]*)"$/) do |user| #ToDo: Figure out how to pass 'user' into the Fixture argument
+Given(/^I log into the School Runner site as "([^"]*)"$/) do |user|
   @demo_login = DemoLoginPage.new
   @demo_login.load
-  @demo_login.login(FIXTURE.user_1.username, FIXTURE.user_1.password)
+  @demo_login.login(FIXTURE.send(user).username, FIXTURE.send(user).password)
+  # @demo_login.login(FIXTURE.user_1.username, FIXTURE.user_1.password)
 end
 
 When(/^I login with valid credentials$/) do
@@ -38,6 +39,10 @@ Then(/^I see an error indicator$/) do
     expect(@demo_login.password_error).to be  # passes if obj is truthy (not nil or false)
     @demo_login.has_password_error?           # same validation using site-prism method
   end
+end
+
+Then(/^I see an invalid credentials error message$/) do
+  expect(@demo_login.invalid_credentials_error).to have_content("Email/Username or password incorrect. Please try again.")
 end
 
 Then(/^I remain on the demo site login page$/) do

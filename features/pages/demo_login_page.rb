@@ -4,11 +4,12 @@ class DemoLoginPage < SitePrism::Page
   set_url_matcher /demo.schoolrunner.org\/?/
 
   #ELEMENT DEFINITIONS
-  element :username_input,      'input[name="username"]'
-  element :password_input,      'input[name="password"]'
-  element :sign_in_button,      'a.btn.btn-block' 
-  element :username_error,      'input.error[name="username"]'
-  element :password_error,      'input.error[name="password"]'
+  element :username_input, :css,            'input[name="username"]'
+  element :password_input, :css,            'input[name="password"]'
+  element :sign_in_button, :css,            'a.btn.btn-block' 
+  element :username_error, :css,            'input.error[name="username"]'
+  element :password_error, :css,            'input.error[name="password"]'
+  element :invalid_credentials_error, :css, '.alert'
 
   #METHODS
 

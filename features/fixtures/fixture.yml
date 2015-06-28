@@ -12,3 +12,7 @@ screen_sizes:
 user_1:
   username: kevint@boulder.net
   password: $8ndyGirl
+
+user_2:
+  username: bugs_bunny@acme.com
+  password: whatsupdoc?

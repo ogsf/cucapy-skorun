@@ -9,9 +9,11 @@ When(/^I select the "([^"]*)" school$/) do |arg1|
   @demo_home.wait_for_school_menu_list
   @demo_home.school_menu_list.click
   @demo_home.school_menu_list_east.click
-  sleep(5)
 end
 
 Then(/^I am shown the correct number of students$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @demo_class_attendance = DemoClassAttendancePage.new
+  @demo_class_attendance.wait_for_student_count
+  puts @demo_class_attendance.student_count.text
+  expect(@demo_class_attendance.student_count.text).to have_content('24')
 end
