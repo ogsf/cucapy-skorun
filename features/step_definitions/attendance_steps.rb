@@ -14,6 +14,5 @@ end
 Then(/^I am shown the correct number of students$/) do
   @demo_class_attendance = DemoClassAttendancePage.new
   @demo_class_attendance.wait_for_student_count
-  puts @demo_class_attendance.student_count.text
-  expect(@demo_class_attendance.student_count.text).to have_content('24')
+  expect(page).to have_content('Students (0)')
 end

@@ -23,3 +23,4 @@ Feature: Logging in to demo site
     Given I am on the SchoolRunner demo site login page
     When I log into the School Runner site as "user_2"
     Then I see an invalid credentials error message
+    

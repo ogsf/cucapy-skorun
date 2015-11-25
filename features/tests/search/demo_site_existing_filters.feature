@@ -5,4 +5,4 @@ Feature: Search page filters on demo site
   Scenario: A user can view existing filters
     Given I am on the SchoolRunner demo site search page
     When I view existing filters
-    Then I see the expected saved filters
+    Then I see the expected existing filters
